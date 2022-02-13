@@ -1,0 +1,45 @@
+<%- include('../layouts/header') %> 
+<%- include('../layouts/navbar') %> 
+
+<div class="justify-content-sm-center">
+  
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">Number</th>
+            <th scope="col">Gambar</th>
+            <th scope="col">Deskripsi</th>
+            <th scope="col">Harga</th>
+            </tr>
+        </thead>
+       
+        <tbody>
+           
+        </tbody>
+     
+    </table>
+</div>
+
+<%- include('../layouts/footer') %> 
+
+<script>
+    $(document).ready(function(){
+        $.get("/api/get/product", async function(data, status){
+            for (let i = 0; i < data.length; i++) {
+                console.log(data[i])
+                $( "tbody" ).append( `
+                <tr>
+                    <th scope="row">${i+1}</th>
+                    <td class="m-1"></td>
+                    <td>${data[i].title}</td>
+                    <td>${data[i].price}</td>
+                </tr>
+                `);
+            }
+        });
+    });
+   
+  
+  
+  
+</script>
